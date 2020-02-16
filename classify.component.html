@@ -1,0 +1,36 @@
+<!-- Fourth Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="func4">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-calendar w3-padding-64 w3-text-red w3-margin-right"></i>
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Classify by Dates</h1>
+      <h5 class="w3-padding-32">Welcome to the Classify by dates API. We have created this API to classify all the news which were fetched by the Fetch News API into specified date. </h5>
+
+      <p class="w3-text-grey">
+	  
+		<form action="/ClassifyByDates">
+			<!--<date-util format="yyyy-mm-dd" ></date-util>-->
+			<input type="date" value="" id="StartDate" placeholder="Enter Start Date" style="width:350px" required/><br><br>
+			<input type="date" value="" id="EndDate" placeholder="Enter End Date" style="width:350px" required/><br><br>
+			<button class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;" onClick="classifyByDates()" id="ClassifyByDates">Classify by date</button>
+		</form>
+		
+		<!--
+      	<a href="ClassifyByDates.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Classify by date</a>
+		-->
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function classifyByDates() {
+      var StDate = document.getElementById("StartDate").value;
+      var EnDate = document.getElementById("EndDate").value;
+      localStorage.setItem("StartDate", StDate);
+      localStorage.setItem("EndDate", EnDate);
+    }
+</script>

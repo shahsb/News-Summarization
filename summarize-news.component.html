@@ -1,0 +1,17 @@
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">Welcome to Summarization API</h1>
+</header>
+
+ <h1 align="center">Here is the Summary of Fetched News</h1><br>
+  
+ <ul *ngFor="let d of data | paginate: {itemsPerPage:1, currentPage:page, id:'3'};">
+    <li><strong>Title : <a href={{d.url}}><h4 align="center">{{d.title}}</h4></a></strong> <br> <strong>URL :</strong> <a href={{d.url}}>{{d.url}}</a> <br>
+      <strong>Date :</strong> {{d.date}} <br><strong><h3 align ="center"> News Description :</h3></strong><h5> {{d.input_text}}</h5> <br><br> <strong><h3 align="center">Summary :</h3></strong> <h4>{{d.sum}}</h4><br><br></li>
+  </ul>
+
+<pagination-controls (pageChange)= " page= $event" id="3" >
+
+</pagination-controls>
+

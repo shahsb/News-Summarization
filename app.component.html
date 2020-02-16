@@ -1,0 +1,302 @@
+  <div *ngIf="this._router.url.includes('SummarizeNews') || this._router.url.includes('ClassifyByDates') || this._router.url.includes('TextSummarization')">
+    <router-outlet>
+    </router-outlet>
+  </div>
+
+  <div *ngIf="this._router.url.includes('FetchNews')">
+    <app-fetch-news [url]="url"></app-fetch-news>
+  </div>
+  
+  <div *ngIf="this._router.url.includes('home')">
+
+
+  <!-- Header -->
+  <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Multimedia Summarization</h1>
+    <p class="w3-xlarge"> Text Summarization</p>
+    <!-- <p class="w3-xlarge">2. Audio Summarization</p> -->
+
+  </header>
+
+
+  <!-- First Grid -->
+  <div class="w3-row-padding w3-padding-64 w3-container" id="func1">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Fetch News</h1>
+        <h5 class="w3-padding-32">Welcome to the Fetch News API. we have created this fetch news API to get all news from web and store it into Mongo
+          DB Database.</h5>
+
+        <p class="w3-text-grey" align="center">
+        </p>
+        <form [formGroup]="formFetch" (ngSubmit)="onSubmitFetch()">
+          <div *ngIf="formFetch.controls['url'].hasError('required')">
+              Please enter the URL :
+            </div>
+            <br />
+          <input type="text" value="" id="UrlToFetch" placeholder="Enter the URL from where u want to fetch News" style="width:350px"
+            formControlName="url" />
+          <br>
+          <br>
+          
+          <button [disabled]="!formFetch.valid" type="submit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
+            style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;"
+            id="FetchNews">Fetch News</button>
+        </form>
+
+        <!--  	<a href="FetchNews.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Fetch News</a>
+	-->
+
+      </div>
+
+      <div class="w3-third w3-center">
+        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Second Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="func2">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+      </div>
+
+      <div class="w3-twothird">
+        <h1>Summarize News Using LSA Algorithm</h1>
+        <h5 class="w3-padding-32">Welcome to the Summarize News API. We have created this API to summarize all the news which were fetched by the Fetch
+          News API. This API uses various machine learning algorithms to summarize the news.</h5>
+
+        <p class="w3-text-grey">
+          <a (click)="summarizeButton1()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Summarize News</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Third Grid -->
+  <div class="w3-row-padding w3-padding-64 w3-container" id="func3">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Summarize News Using LEX Rank Algorithm</h1>
+        <h5 class="w3-padding-32">Welcome to the Summarize News API. We have created this API to summarize all the news which were fetched by the Fetch
+          News API. This API uses various machine learning algorithms to summarize the news.</h5>
+
+        <p class="w3-text-grey" align="center">
+          <a (click)="summarizeButton2()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Summarize News</a>
+
+        </p>
+      </div>
+
+      <div class="w3-third w3-center">
+        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Fourth Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="func4">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+      </div>
+
+      <div class="w3-twothird">
+        <h1>Summarize News Using Luhn's Algorithm</h1>
+        <h5 class="w3-padding-32">Welcome to the Summarize News API. We have created this API to summarize all the news which were fetched by the Fetch
+          News API. This API uses various machine learning algorithms to summarize the news.</h5>
+
+        <p class="w3-text-grey">
+          <a (click)="summarizeButton3()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Summarize News</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Fifth Grid -->
+  <div class="w3-row-padding w3-padding-64 w3-container" id="func5">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Classify News</h1>
+        <h5 class="w3-padding-32">Welcome to the Classify News API. we have created this fetch news API to classify all news which were fetched and
+          stored into Mongo DB Database by Fetch News API. It will classify news into particular news domain i.e it will
+          give haeding to the news.</h5>
+
+        <p class="w3-text-grey" align="center">
+          <a href="" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Classify News</a>
+
+        </p>
+      </div>
+
+      <div class="w3-third w3-center">
+        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sixth Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="func6">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa fa-calendar w3-padding-64 w3-text-red w3-margin-right"></i>
+      </div>
+
+      <div class="w3-twothird">
+        <h1>Classify by Dates</h1>
+        <h5 class="w3-padding-32">Welcome to the Classify by dates API. We have created this API to classify all the news which were fetched by the
+          Fetch News API into specified date. </h5>
+
+        <p class="w3-text-grey">
+
+          <form [formGroup]="formClassifyByDates" (ngSubmit)="onSubmitClassify()">
+            <!--<date-util format="yyyy-mm-dd" ></date-util>-->
+            <input type="date" value="" id="StartDate" placeholder="Enter Start Date" style="width:350px" formControlName="StartDate"
+              required/>
+            <br>
+            <br>
+            <input type="date" value="" id="EndDate" placeholder="Enter End Date" style="width:350px" formControlName="EndDate" />
+            <br>
+            <br>
+            <button type="submit" [disabled]="!formClassifyByDates.valid" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
+              style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;"
+              id="ClassifyByDates">Classify by date</button>
+          </form>
+
+          <!--
+      	<a href="ClassifyByDates.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Classify by date</a>
+		-->
+
+      </div>
+    </div>
+  </div>
+
+  <!-- seventh Grid -->
+  <div class="w3-row-padding w3-padding-64 w3-container" id="func7">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Summarize News Using Text Rank Algorithm</h1>
+        <h5 class="w3-padding-32">Welcome to the Summarize News API. We have created this API to summarize all the news which were fetched by the Fetch
+          News API. This API uses various machine learning algorithms to summarize the news.</h5>
+
+        <p class="w3-text-grey" align="center">
+          <a (click)="summarizeButton4()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Summarize News</a>
+
+        </p>
+      </div>
+
+      <div class="w3-third w3-center">
+        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- eight Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="func8">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+      </div>
+
+      <div class="w3-twothird">
+        <h1>Summarize News SEQ_2_SEQ (Deep Learning Model)</h1>
+        <h5 class="w3-padding-32">Welcome to the Summarize News API. We have created this API to summarize all the news which were fetched by the Fetch
+          News API. This API uses Deep Learning SEQ_2_SEQ Neural Networks to summarize the news.</h5>
+
+        <p class="w3-text-grey">
+          <a (click)="summarizeButton5()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Summarize News</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- nineth Grid -->
+  <div class="w3-row-padding w3-padding-64 w3-container" id="func9">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Summarize News Using RNN (Deep Learning) Model</h1>
+        <h5 class="w3-padding-32">Welcome to the Summarize News API. We have created this API to summarize all the news which were fetched by the Fetch
+          News API. This API uses Deep learning Recurrent Neural Networks to summarize the news.</h5>
+
+        <p class="w3-text-grey" align="center">
+          <a (click)="summarizeButton6()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Summarize News</a>
+
+        </p>
+      </div>
+
+      <div class="w3-third w3-center">
+        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tenth Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="func10">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+      </div>
+
+      <div class="w3-twothird">
+        <h1>Summarize News Using SEQ_2_SEQ_WITH_GLOVE (Deep Learning Model)</h1>
+        <h5 class="w3-padding-32">Welcome to the Summarize News API. We have created this API to summarize all the news which were fetched by the Fetch
+          News API. This API uses Deep Learning SEQ_2_SEQ Neural Networks with use of Glove Vector to summarize the news.</h5>
+
+        <p class="w3-text-grey">
+          <a (click)="summarizeButton7()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Summarize News</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--Eleventh Grid 
+  <div class="w3-row-padding w3-padding-64 w3-container" id="func11">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Classify News Using SVM (Support Vector Machine) Machine Learning Algorithm</h1>
+        <h5 class="w3-padding-32">Welcome to the Classify News API. We have created this API to Classify all the news which were fetched by the Fetch
+          News API. This API uses Support Vector Machine (SVM) machine learning algorithms to Classify the news.</h5>
+
+        <p class="w3-text-grey" align="center">
+          <a (click)="summarizeButton8()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Classify News</a>
+
+        </p>
+      </div>
+
+      <div class="w3-third w3-center">
+        <i class="fa fa-anchor w3-padding-64 w3-text-blue"></i>
+      </div>
+    </div>
+  </div>	
+  
+  <!--Twelth Grid 
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="func12">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa fa-coffee w3-padding-64 w3-text-blue w3-margin-right"></i>
+      </div>
+
+      <div class="w3-twothird">
+        <h1>Classify News Using Naive Bayes Machine Learning Algorithm</h1>
+        <h5 class="w3-padding-32">Welcome to the Classify News API. We have created this API to Classify all the news which were fetched by the Fetch
+          News API. This API uses Naive Bayes machine learning algorithms to Classify the news.</h5>
+
+        <p class="w3-text-grey">
+          <a (click)="summarizeButton9()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style="width:200px;height:40px;font-weight:bold;background:#339966;border-radius:5px;border:2px solid #3B6E22;color:white;font-size:20px;fonr-style:georgia;">Classify News</a>
+        </p>
+      </div>
+    </div>
+  </div>-->
+
+  
+  
+  <!-- Footer -->
+  <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Stay tunned for more updates</h1>
+  </div>
+
+
+</div>
